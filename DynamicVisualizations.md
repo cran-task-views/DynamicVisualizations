@@ -1,9 +1,9 @@
 ---
-name: VisualizationDynamic
+name: DynamicVisualizations
 topic: Dynamic Graphics
 maintainer: Dianne Cook, Sherry Zhang
 email: dicook@monash.edu
-version: 2023-02-23
+version: 2024-01-05
 source: https://github.com/cran-task-views/VisualizationStatic/
 ---
 
