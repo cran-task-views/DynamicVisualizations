@@ -4,7 +4,7 @@ topic: Dynamic Graphics
 maintainer: Dianne Cook, Sherry Zhang
 email: dicook@monash.edu
 version: 2024-01-05
-source: https://github.com/cran-task-views/VisualizationStatic/
+source: https://github.com/cran-task-views/DynamicVisualizations/
 ---
 
 One of the strengths of R is the wealth of data plotting packages. This CRAN Task View maintains a list of dynamic graphics packages, for making animations and interactive plots, and links to web resources on plotting data. 
