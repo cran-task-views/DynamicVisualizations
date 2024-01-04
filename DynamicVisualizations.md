@@ -7,37 +7,37 @@ version: 2023-02-23
 source: https://github.com/cran-task-views/VisualizationStatic/
 ---
 
-One of the strengths of R is the wealth of data plotting packages. This CRAN Task View maintains a list of dynamic graphics packages, including animations and interactive plots, and links to web resources on plotting data.
+One of the strengths of R is the wealth of data plotting packages. This CRAN Task View maintains a list of dynamic graphics packages, for making animations and interactive plots, and links to web resources on plotting data. 
 
-Note that some of these packages are on CRAN and others are on GitHub, Bioconductor, or R-Forge.
+The scope does not include packages focusing on static plots (which is a separate Task View), graphics devices, or packages that have small dynamic graphics components but are primarily focused on other purposes. Note that most of these packages are on CRAN with some on GitHub, Bioconductor, or R-Forge.
 
 If you think that a package is missing from this list, please let us know through issues or pull requests in the [GitHub repository](https://github.com/cran-task-views/VisualizationStatic).
 
 ## Table of contents
 
-- [General purpose](#general)
+- [General purpose](#general-purpose)
 - [Infrastructure](#infrastructure)
-- [Interfaces to other visualization systems](#interfaces)
-- [Animations](#animation)
+- [Interfaces to other visualization systems](#interfaces-to-other-visualization-systems)
+- [Animations](#animations)
 - [Maps](#maps)
 - [Networks](#networks)
-- [Small multiples](#multiples)
+- [Small multiples](#small-multiples)
 - [Multivariate](#multivariate)
-- [rgl additions](#rgl)
-- [Web resources and advice](#advice)
+- [rgl additions](#rgl-additions)
+- [Links](#links)
 
-## [General purpose]{#general}
+## General purpose
 
 - `r package("ggiraph")` | adopts ggplot syntax for interactive graphics.
 - `r package("highcharter")` | R binding to the general purpose highchart JavaScript library.
 - `r package("rgl")` |  3D visualization using OpenGL
 
-## [Infrastructure]{#infrastructure}
+## Infrastructure
 
 - `r package("crosstalk")` | Tools to get plots to communicate with each other. 
 - `r package("shiny")` | Web application creation 
 
-## [Interfaces to other visualization systems]{#interfaces}
+## Interfaces to other visualization systems
 
 - `r package("plotly")` |  interface to plotly for general purpose, and generally allows defining and constructing of new interactive graphics, including linking between plots.
 - `r package("rthreejs")` | interface to three.js 
@@ -49,13 +49,13 @@ If you think that a package is missing from this list, please let us know throug
 - `r package("rbokeh")` | interface to Bokeh
 - `r package("googleVis")` | interface to Google Charts.
 
-## [Animations]{#animation}
+## Animations
 
 - `r package("gganimate")` | A layered system for adding interactivity to `r package("ggplot2")` plots.
 - `r package("animate")` | A web-based graphics device for animated visualisations, modelled on the `base` syntax, it extends the `base` graphics functions to
   support frame-by-frame animation and keyframes animation.
 
-## [Maps]{#maps}
+## Maps
 
 - `r package("leaflet")` and its associates:
     - `r package("leafem")`, `r package("leafgl")` to interface with WebGl,  
@@ -68,19 +68,19 @@ If you think that a package is missing from this list, please let us know throug
 - `r package("mapview")` for making quick maps with simple syntax
 - `r package("tmap")` as a grammar of graphic for thematic maps (also produce static maps)
 
-## [Networks]{#networks}
+## Networks
 
 - `r package("dygraphs")` for time series data
 - `r package("networkD3")` to interface D3 network graphics
 - `r package("sigmajs")` for network graphics with sigma.js
 - `r package("visNetwork")` to interface with vis.js for network
 
-## [Small multiples]{#multiples}
+## Small multiples
 
 - `r package("scatterplotmatrix")` for scatterplot matrix based on D3
 - `r package("trelliscopejs")` to interface trelliscope.js to view small multiples 
 
-## [Multivariate]{#multivariate}
+## Multivariate
 
 - `r package("loon")` An extendable toolkit for interactive data visualization and exploration.
 - `r package("tourr")` Implements geodesic interpolation and basis generation functions that allow you to create new tour methods from R.
@@ -89,7 +89,7 @@ If you think that a package is missing from this list, please let us know throug
 - `r package("liminal")` Compose interactive visualisations designed for exploratory high-dimensional data analysis.
 - `r package("langevitour")` An HTML widget that randomly tours 2D projections of numerical data.
 
-## [rgl additions]{#rgl}
+## rgl additions
 
 -  `r package("rglplus")` | Extra 3D utilities
 - `r package("rglwidget")` | `r package("rgl")`" in `r package("htmlwidgets")`" framework
@@ -97,6 +97,6 @@ If you think that a package is missing from this list, please let us know throug
 - `r package("plot3Drgl")` | Plotting multi-dimensional data 
 - `r package("predict3d")` | Draw 3D predict lot 
 
-## [Graphics resources and advice web sites]{#advice}
+### Links
 
 - [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com)
