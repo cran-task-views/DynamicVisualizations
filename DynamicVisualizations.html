@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRAN Task View: Dynamic Graphics</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="citation_title" content="CRAN Task View: Dynamic Graphics" />
+  <meta name="citation_author" content="Dianne Cook, Sherry Zhang" />
+  <meta name="citation_publication_date" content="2024-01-05" />
+  <meta name="DC.title" content="CRAN Task View: Dynamic Graphics" />
+  <meta name="DC.creator" content="Dianne Cook, Sherry Zhang" />
+  <meta name="DC.issued" content="2024-01-05" />
+  <meta name="og:title" content="CRAN Task View: Dynamic Graphics" />
+  <meta name="og:description" content="One of the strengths of R is the wealth of data plotting packages. This CRAN Task View maintains a list of dynamic graphics packages, for making animations and interactive plots." />
+  <meta name="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+<body>
+  <h2>CRAN Task View: Dynamic Graphics</h2>
+  <table>
+    <tr><td style="vertical-align: top;"><b>Maintainer:</b></td><td>Dianne Cook, Sherry Zhang</td></tr>
+    <tr><td style="vertical-align: top;"><b>Contact:</b></td><td>&#x64;&#x69;&#x63;&#x6f;&#x6f;&#x6b;&#x20;&#x61;&#x74;&#x20;&#x6d;&#x6f;&#x6e;&#x61;&#x73;&#x68;&#x2e;&#x65;&#x64;&#x75;</td></tr>
+    <tr><td style="vertical-align: top;"><b>Version:</b></td><td>2024-01-05</td></tr>
+    <tr><td style="vertical-align: top;"><b>Source:</b></td><td><a href="https://github.com/cran-task-views/DynamicVisualizations/">https://github.com/cran-task-views/DynamicVisualizations/</a></td></tr>
+    <tr><td style="vertical-align: top;"><b>Citation:</b></td><td>Dianne Cook, Sherry Zhang (2024). CRAN Task View: Dynamic Graphics. Version 2024-01-05.</td></tr>
+  </table>
+
+<p>One of the strengths of R is the wealth of data plotting packages. This CRAN Task View maintains a list of dynamic graphics packages, for making animations and interactive plots.</p>
+<p>Static plots are not within the scope of this CRAN Task View, neither are graphic devices. Domain-specific packages with merely one or two functions to produce interactive plots or animation may not be included.</p>
+<p>If you think that a package is missing from this list, please let us know through issues or pull requests in the <a href="https://github.com/cran-task-views/DynamicVisualizations">GitHub repository</a>.</p>
+<h1 id="general-purpose">General purpose</h1>
+<p>A collection of interactive visualisation pacakges in R are powered by Javascript via <code>htmlwidgets</code>.</p>
+<ul>
+<li><a href="https://CRAN.R-project.org/package=ggiraph">ggiraph</a> provides ggplot2-inspired syntax like <code>geom_xxx_interactive()</code> to add tooltips and customised interactive effects.</li>
+<li>The package <a href="https://CRAN.R-project.org/package=crosstalk">crosstalk</a> creates linked plots for brushing and filtering through a <em>SharedData</em> object. For temporal data, <a href="https://CRAN.R-project.org/package=tsibbletalk">tsibbletalk</a> creates shared tsibble objects to produce linked plots.</li>
+<li>Packages that wrap the Javascript visualisation library:
+<ul>
+<li><em>plotly</em>: Static plots created from ggplot2 can be turned into an interactive plot via the <a href="https://CRAN.R-project.org/package=plotly">plotly</a> function <code>ggplotly()</code></li>
+<li><em>D3</em>: The function <code>r2d3()</code> in <a href="https://CRAN.R-project.org/package=r2d3">r2d3</a> binds an R data object to a D3 JS script.</li>
+<li><em>Vega/ Vega-Lite</em>: The <a href="https://CRAN.R-project.org/package=vegawidget">vegawidget</a> package takes a vega specification (can be created from a list in R via <code>as_vegaspec()</code>). The <a href="https://CRAN.R-project.org/package=altair">altair</a> package interfaces to the Python altair package that interfaces to Javascript Vega-Lite.</li>
+<li><em>Highcharts</em>: <a href="https://CRAN.R-project.org/package=highcharter">highcharter</a> provides quick syntax for plotting a range of native R objects, including <code>data.frame</code>, <code>ts</code>, <code>xts</code>, <code>forecast</code>, and <code>survfit</code>.</li>
+<li><em>Apache ECharts</em>: <a href="https://CRAN.R-project.org/package=echarts4r">echarts4r</a>, similarly <a href="https://CRAN.R-project.org/package=echarty">echarty</a></li>
+<li><em>Google Charts</em>: <a href="https://CRAN.R-project.org/package=googleVis">googleVis</a></li>
+<li><a href="https://CRAN.R-project.org/package=metricsgraphics">metricsgraphics</a> interfacing to MetricsGraphics.js D3 chart library</li>
+<li><a href="https://CRAN.R-project.org/package=billboarder">billboarder</a> interfacing to billboard.js D3 chart library, under D3.</li>
+<li><a href="https://CRAN.R-project.org/package=rAmCharts">rAmCharts</a> and <a href="https://CRAN.R-project.org/package=rAmCharts4">rAmCharts4</a></li>
+</ul></li>
+</ul>
+<p>While most dynmaic visualization in R is created through interfacing to Javascript, an alternative method is to iterate through static frames (frame-by-frame looping).</p>
+<ul>
+<li><a href="https://CRAN.R-project.org/package=gganimate">gganimate</a> built on top of <code>ggplot2</code> to create animation.</li>
+<li><a href="https://CRAN.R-project.org/package=animate">animate</a> | A web-based graphics device for animated visualisations, modelled on the <code>base</code> syntax, it extends the <code>base</code> graphics functions to support frame-by-frame animation and keyframes animation.</li>
+</ul>
+<h1 id="multivariate">Multivariate</h1>
+<p>One of the most common visualisations for high dimension data is scatterplot matrix. It can be created with <code>GGally::ggpairs()</code> and turned into interactive using <code>plotly::ggplotly()</code> to enable linked brushing to view the data at different variable combinations. The <a href="https://CRAN.R-project.org/package=pairsD3">pairsD3</a> package creates scatterplot matrices through D3 javascript library.</p>
+<p>When the multivariate relationship is attributed to more than two variables, a scatterplot matrix becomes insufficent and a family of technique, called tour, can be useful to explore the structure in high dimensional data. The tour technique animates a sequence of linear projections of high dimensional data and it has two components: 1) tour type: how the projection sequence is generated, and 2) display: how low-D projections are displayed. Different tours are available to select the projection sequences (grand tour: random selection, guided tour: based on projection pursuit, etc). The most common display is histograms for 1D projections and scatterplot for 2D projections. Other higher-D displays are also available, including the Chernoff face.</p>
+<ul>
+<li><a href="https://CRAN.R-project.org/package=tourr">tourr</a> implements varies tourr types (<code>grand_tour</code>, <code>guided_tour</code>, <code>planned_tour</code>, <code>local_tour</code>, etc) and displays (<code>animate_xy</code>: 2D, <code>animate_dist</code>: 1D, etc) to create frame-by-frame animation.</li>
+<li><a href="https://CRAN.R-project.org/package=spinifex">spinifex</a> implements the manual tourr algorithm (<code>manual_tour</code>)</li>
+<li><a href="https://CRAN.R-project.org/package=liminal">liminal</a> implements linked display view to understanding embedding algorithms such as tSNE through <a href="https://CRAN.R-project.org/package=vegawidgets">vegawidgets</a></li>
+<li><a href="https://CRAN.R-project.org/package=detourr">detourr</a> implments the 2D and 3D scatterplot display with three.js for better interactive manipulations (rotation, pan, selection, brushing with color and time control)</li>
+<li><a href="https://CRAN.R-project.org/package=langevitour">langevitour</a> implements the langevin dynamics to generate projection sequence and builds the display with D3.js</li>
+</ul>
+<p>Another class of interactive visualisation in R is the <a href="https://CRAN.R-project.org/package=loon">loon</a> toolkit. The graphic system is written in TCL and accessed in R via the <code>tcltk</code> package.</p>
+<h1 id="maps">Maps</h1>
+<p>For general purpose, the <a href="https://CRAN.R-project.org/package=leaflet">leaflet</a> package provides an R interface to the leaflet Javascript library and a collection of packages are available for additional customisation:</p>
+<ul>
+<li><a href="https://CRAN.R-project.org/package=leafpop">leafpop</a> allows static plots to be displyaed in the leaflet popups,</li>
+<li><a href="https://CRAN.R-project.org/package=leafsync">leafsync</a> displays multiple synced leaflet maps in small multiples,</li>
+<li><a href="https://CRAN.R-project.org/package=leaflegend">leaflegend</a> adds customised images as marks and in the legend,</li>
+<li><a href="https://CRAN.R-project.org/package=leaflet.multiopacity">leaflet.multiopacity</a> provides controls the opacity over different plot layers</li>
+<li><a href="https://CRAN.R-project.org/package=leafem">leafem</a> supports GIS-related layers, (e.g. Cloud Optimised Geotiff (COG), stars/rasters images), to leaflet map,</li>
+<li><a href="https://CRAN.R-project.org/package=leafgl">leafgl</a> has the capacity to render large scale data (e.g. 1 million points or 100k polygons) in leaflet with the WebGL framework,</li>
+<li><a href="https://CRAN.R-project.org/package=leaflet.minicharts">leaflet.minicharts</a> renders glyphs on leaflet maps.</li>
+<li><a href="https://CRAN.R-project.org/package=mapedit">mapedit</a> provides interactive editing on leaflet maps</li>
+</ul>
+<p>For exploratory data analysis, it comes handy to able to create maps quickly with short syntax to plot the geospatial data. <a href="https://CRAN.R-project.org/package=mapview">mapview</a> is such a package for creating quick leaflet and mapdeck maps from common spatial classes in R (<code>sf</code>, <code>raster</code>, <code>stars</code>, etc).</p>
+<p>When working with large scale spatial data, graphic libraries are usually used for rendering maps and this includes 1) <a href="https://CRAN.R-project.org/package=mapboxer">mapboxer</a> via Mapbox, 2) <a href="https://CRAN.R-project.org/package=deckgl">deckgl</a> via Deck.gl, and 3) <a href="https://CRAN.R-project.org/package=mapdeck">mapdeck</a> via Mapbox GL and Deck.gl.</p>
+<p>The <a href="https://CRAN.R-project.org/package=tmap">tmap</a> package proposes a new grammar tailored for thematic maps (both static and interactive) and leaflet is used for interactive map rendering.</p>
+<h1 id="networks-and-trees">Networks and trees</h1>
+<p>Package interfacing with Javascript libraries to plot networks diagrams includes</p>
+<ul>
+<li><a href="https://CRAN.R-project.org/package=networkD3">networkD3</a> to create D3 network diagrams (force directed networks, sankey diagrams, radial networks, and dendrogram)</li>
+<li><a href="https://CRAN.R-project.org/package=visNetwork">visNetwork</a> that provides interfaces to vis.js</li>
+<li><a href="https://CRAN.R-project.org/package=sigmajs">sigmajs</a> that interfaces with sigma.js</li>
+</ul>
+<p>All three packages can convert native R data frames or igraph objects into network diagrams powered by their corresponding Javascript libraries. The packages <a href="https://CRAN.R-project.org/package=networkD3">networkD3</a> and <a href="https://CRAN.R-project.org/package=visNetwork">visNetwork</a> use a single-line command for quick plotting, while <a href="https://CRAN.R-project.org/package=sigmajs">sigmajs</a> takes a structured grammar to build the networks.</p>
+<p>The <a href="https://CRAN.R-project.org/package=collapsibleTree">collapsibleTree</a> package allows users to click on tree nodes to expand and collapse complex trees through D3.js in the backend.</p>
+<h1 id="miscellaneous">Miscellaneous</h1>
+<p>R also includes packages dedicated to specific interactive visualizations, often by interfacing with relevant JavaScript libraries.</p>
+<ul>
+<li>temporal: <a href="https://CRAN.R-project.org/package=dygraphs">dygraphs</a> (dygraphs.js)</li>
+<li>small multiples: <a href="https://CRAN.R-project.org/package=trelliscopejs">trelliscopejs</a> (trelliscope.js)</li>
+<li>heatmap: <a href="https://CRAN.R-project.org/package=heatmaply">heatmaply</a> (plotly.js), <a href="https://CRAN.R-project.org/package=d3heatmap">d3heatmap</a> (D3.js), <a href="https://CRAN.R-project.org/package=iheatmapr">iheatmapr</a> (plotly.js).</li>
+<li>parallel coordinate plot: <a href="https://CRAN.R-project.org/package=parallelPlot">parallelPlot</a> (d3.js)</li>
+<li>timeline: <a href="https://CRAN.R-project.org/package=timevis">timevis</a> (vis.js)</li>
+<li>upset plot: <a href="https://CRAN.R-project.org/package=upsetjs">upsetjs</a> (upset.js)</li>
+</ul>
+<h1 id="links">Links</h1>
+<ul>
+<li>Book: <a href="https://plotly-r.com">Interactive web-based data visualization with R, plotly, and shiny</a></li>
+<li>Book: <a href="https://book.javascript-for-r.com/">Javascript for R</a></li>
+<li>Book: <a href="https://dicook.github.io/mulgar_book/">Interactively exploring high-dimensional data and models in R</a></li>
+</ul>
+
+  <h3>CRAN packages</h3>
+  <table>
+    <tr style="vertical-align: top;"><td><i>Core:</i></td><td><a href="https://CRAN.R-project.org/package=crosstalk">crosstalk</a>, <a href="https://CRAN.R-project.org/package=gganimate">gganimate</a>, <a href="https://CRAN.R-project.org/package=ggiraph">ggiraph</a>, <a href="https://CRAN.R-project.org/package=leaflet">leaflet</a>, <a href="https://CRAN.R-project.org/package=plotly">plotly</a>.</td></tr>
+    <tr style="vertical-align: top;"><td><i>Regular:</i></td><td><a href="https://CRAN.R-project.org/package=altair">altair</a>, <a href="https://CRAN.R-project.org/package=animate">animate</a>, <a href="https://CRAN.R-project.org/package=billboarder">billboarder</a>, <a href="https://CRAN.R-project.org/package=collapsibleTree">collapsibleTree</a>, <a href="https://CRAN.R-project.org/package=d3heatmap">d3heatmap</a>, <a href="https://CRAN.R-project.org/package=deckgl">deckgl</a>, <a href="https://CRAN.R-project.org/package=detourr">detourr</a>, <a href="https://CRAN.R-project.org/package=dygraphs">dygraphs</a>, <a href="https://CRAN.R-project.org/package=echarts4r">echarts4r</a>, <a href="https://CRAN.R-project.org/package=echarty">echarty</a>, <a href="https://CRAN.R-project.org/package=googleVis">googleVis</a>, <a href="https://CRAN.R-project.org/package=heatmaply">heatmaply</a>, <a href="https://CRAN.R-project.org/package=highcharter">highcharter</a>, <a href="https://CRAN.R-project.org/package=iheatmapr">iheatmapr</a>, <a href="https://CRAN.R-project.org/package=langevitour">langevitour</a>, <a href="https://CRAN.R-project.org/package=leafem">leafem</a>, <a href="https://CRAN.R-project.org/package=leafgl">leafgl</a>, <a href="https://CRAN.R-project.org/package=leaflegend">leaflegend</a>, <a href="https://CRAN.R-project.org/package=leaflet.minicharts">leaflet.minicharts</a>, <a href="https://CRAN.R-project.org/package=leaflet.multiopacity">leaflet.multiopacity</a>, <a href="https://CRAN.R-project.org/package=leafpop">leafpop</a>, <a href="https://CRAN.R-project.org/package=leafsync">leafsync</a>, <a href="https://CRAN.R-project.org/package=liminal">liminal</a>, <a href="https://CRAN.R-project.org/package=loon">loon</a>, <a href="https://CRAN.R-project.org/package=mapboxer">mapboxer</a>, <a href="https://CRAN.R-project.org/package=mapdeck">mapdeck</a>, <a href="https://CRAN.R-project.org/package=mapedit">mapedit</a>, <a href="https://CRAN.R-project.org/package=mapview">mapview</a>, <a href="https://CRAN.R-project.org/package=metricsgraphics">metricsgraphics</a>, <a href="https://CRAN.R-project.org/package=networkD3">networkD3</a>, <a href="https://CRAN.R-project.org/package=pairsD3">pairsD3</a>, <a href="https://CRAN.R-project.org/package=parallelPlot">parallelPlot</a>, <a href="https://CRAN.R-project.org/package=r2d3">r2d3</a>, <a href="https://CRAN.R-project.org/package=rAmCharts">rAmCharts</a>, <a href="https://CRAN.R-project.org/package=rAmCharts4">rAmCharts4</a>, <a href="https://CRAN.R-project.org/package=sigmajs">sigmajs</a>, <a href="https://CRAN.R-project.org/package=spinifex">spinifex</a>, <a href="https://CRAN.R-project.org/package=timevis">timevis</a>, <a href="https://CRAN.R-project.org/package=tmap">tmap</a>, <a href="https://CRAN.R-project.org/package=tourr">tourr</a>, <a href="https://CRAN.R-project.org/package=trelliscopejs">trelliscopejs</a>, <a href="https://CRAN.R-project.org/package=tsibbletalk">tsibbletalk</a>, <a href="https://CRAN.R-project.org/package=upsetjs">upsetjs</a>, <a href="https://CRAN.R-project.org/package=vegawidget">vegawidget</a>, <a href="https://CRAN.R-project.org/package=vegawidgets">vegawidgets</a>, <a href="https://CRAN.R-project.org/package=visNetwork">visNetwork</a>.</td></tr>
+  </table>
+
+
+</body>
+</html>
