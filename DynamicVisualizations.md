@@ -9,7 +9,7 @@ source: https://github.com/cran-task-views/DynamicVisualizations/
 
 One of the strengths of R is the wealth of data plotting packages. This CRAN Task View maintains a list of dynamic graphics packages, for making animations and interactive plots.
 
-Static plots are not within the scope of this CRAN Task View, neither are graphic devices. Domain-specific packages with merely one or two functions to produce interactive plots or animation may not be included. 
+Static plots are not within the scope of this CRAN Task View, neither are graphic devices. Domain-specific packages with only one or two functions to produce interactive plots or animation may not be included. 
 
 If you think that a package is missing from this list, please let us know through issues or pull requests in the [GitHub repository](https://github.com/cran-task-views/DynamicVisualizations).
 
@@ -18,34 +18,41 @@ Dynamic visualizations offers the flexibility for users to interact with the plo
 
 # General purpose
 
-To generically create linked plots use:
+The `htmlwidget` framework helps create interactive visualizations that require external JavaScript libraries. While typical R users may not directly interact with the  `htmlwidgets`/ `vegawidgets` packages (as they primarily target R developers), we include them in this task view since they underpin almost all the packages interfacing with JavaScript in R. From the perspective of package users, the framework is used within packages to transform your **R code** into **JavaScript visualizations**. Specifically, when creating a package interfacing JavaScript, developers need to write 1) R bindings to convert your R code into a widget and 2) JavaScript bindings to link the widget to the imported JavaScript libraries. In this task view,  Packages directly interface with a particular JavaScript library will have the JS libraries specified in parentheses, e.g. The `plotly` package (*plotly.js*). 
 
-- `r pkg("crosstalk", priority = "core")` creates linked plots for brushing and filtering through a *SharedData* object. 
+The following two packages don't directly interface with JS libraries but are generally powerful to create interactive plots in R:
 
-XXX Explain `htmlwidgets` and `vegawidgets`
+- the `r pkg("crosstalk", priority = "core")` package enables linked brushing across multiple plots from htmlwidgets. It operates via a SharedData object in the R6 class and is theoretically applicable to all the htmlwidgets created by various packages. Current supported graphic packages include `plotly`, `leaflet`, and `rgl`. Developers of interactive graphic packages should consider integrating crosstalk within their packages if linked brushing is not directly supported. 
 
-The package `ggplot2` has been one of the most widely-used visualization libraries in the R community, however, it is only designed to make static visualizations. The following packages (functions) aim to expand the `ggplot2` paradigm to dynamic visualization: 
+- the `r pkg("r2d3")` package that binds raw D3 JavaScript codes to R data objects. This gives you full customization on the interactive details but requires the skill to write JS code.
 
-- `r pkg("ggiraph", priority = "core")` creates syntax like `geom_xxx_interactive()` to add tool tips and customized interactive effects. 
-- The `r pkg("plotly", priority = "core")` package contains the `ggplotly()` function which turns ggplot2 objects directly into interactive plots. XXX Something about other functions for interactive plots in this package XXX refer to Carson Sievert's book. Something about animation too
+The following packages can all create interactive graphics of basic types, including scatterplots, bar charts, histograms et). Most packages offer support to highlight plot elements (dots, bars, lines, etc) and display tooltips upon hovering. This review includes the syntax usage of each package, as well as the additional plot types (map, network diagram, etc) and interactive actions supported. 
 
-The majority of the dynamic visualization packages in R interface with the corresponding Javascript libraries. Apart from the `r pkg("r2d3")` package, which requires raw D3 Javascript codes to be bounded to R data objects, most packages create the visualization purely with R codes, requiring little knowledge on Javascript out of the user. One category of packages adopts the *grammar of graphics* thinking to create the plot systematically:
+- The `r pkg("ggiraph", priority = "core")` package aims to expand the `ggplot2` paradigm to dynamic visualization by introducing an interactive version of geoms: `geom_xxx_interactive()`. It supports panning, zooming, lasso selection, and adding png download button through the toolbar.
 
-- `r pkg("plotly", priority = "core")` (*plotly.js*) initiates a plot with `plot_ly()` and uses `add_*()` to specify shapes to draw e.g. markers, lines. Axes and legends are controlled by `layout()` and color is controlled by `colorbar()`. Variables in `plotly` is specified with a `~` upfront.
-- In `r pkg("echarts4r")` and `r pkg("echarty")` (*echarts.js*), A plot is initialised by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the corresponding function starting with `e_`.
-- Other packages behave similarly include `r pkg("metricsgraphics")` (*metricsgraphics.js*) and `r pkg("billboarder")` (*billboard.js* )
-  
-Other packages provide one function for each plot type. This type of functions can be quick to type, while users may find some plot elements difficult to customized. This includes `r pkg("highcharter")` (*highcharts.js*) for plotting a range of native R objects, including `data.frame`, `ts`, `xts`, `forecast`, and `survfit`, `r pkg("googleVis")` (*Google Charts*), `r pkg("rAmCharts")` and `r pkg("rAmCharts4")` (*amcharts.js*).
+- The `r pkg("plotly", priority = "core")` package (*plotly.js*) contains the `ggplotly()` function which turns ggplot2 objects directly into interactive plots. Plots can also be created using native plotly syntax: initialize with `plot_ly()`, specify shapes (markers, lines, etc) through `add_*()`, control axes and legends with `layout()`, and color with `colorbar()`. Variables in `plotly` is specified with a `~` upfront. Every `plotly` plot includes the toolbar to allow panning, box/lasso selection, (selected) zoom in/out, and saving. It also supports brushed linking across multiple data plots, and a common use case is in scatterplot matrices. When a portion of the data is selected in one panel, it will be highlighted simultaneously across all the panels. Animation through `plotly` is introduced under the *Animation* section. More on `plotly` from Carson Sievert's book [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/).
+
+- In `r pkg("echarts4r")`(*echarts.js*), a plot is initialized by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the `e_*` functions, e.g. `e_line()`, `e_axis_labels()`, `e_theme()`. It covers most basic chart types, statistical graphics(confidence band, correlation matrix, etc), geospatial maps, some timeline (time series) displas, and network diagrams. WebGL render is also supported, as well as using customized icons/ pictures in the plot. A unique interactive action supported by the package is to drag either end of the color/fill legend to filter the data within the range on the plot (see `e_visual_map()`).
+
+- In the `r pkg("metricsgraphics")` package (*metricsgraphics.js*), a plot is initialized by `mjs_plot()`. Plot elements (line, bar, histogram, etc) and axis control are added with `mjs_*` functions. In addition, the package supports drawing confidence bands (`mjs_add_confidence_band()`) and customized CSS rules (`mjs_add_css_rule()`).
+
+- In `r pkg("billboarder")` (*billboard.js* ), a plot is initialized by `billboarder()` and plot elements (shape, axes, legend, etc) are specified through `bb_*()` functions. Zooming on the time series plot is supported by selecting the main plot (`bb_zoom()`) or a subchart (`bb_subchart()`) 
+
+- In `r pkg("highcharter")` (*highcharts.js*), a plot is initialized by `hchart()` or built with `hc_add_series()`. Support on plot elements (legend, color, axix, etc) are adjusted through `hc_*()` functions. It also supports maps, network diagrams, and statistical plots (e.g. PCA plot after `princomp()`, correlation matrix). For temporal plots, it supports linked tracking across multiple series and zooming at various scales, through button clicking or dragging on the subchart. It also supports clicking to view the treemap at different hierarchical levels. 
+
+- `r pkg("googleVis")` (*Google Charts*) uses plot type like `gvis[ChartType]()` to specify the plot, e.g. `gvisScatterChart()`. Additional controls of plot elements are passed as a list of `options` inside the main function. It supports creating maps, interactive tables, treemaps, network and sankey diagrams, and calendar plots. 
+
+- `r pkg("rAmCharts")` and `r pkg("rAmCharts4")` (*amcharts.js*) uses plot type syntax `amChartType()` to specify the plot. It supports the selection of multiple datasets through the selection box, see `amStockMultiSet()`. 
 
 # Animation
 
 - `r pkg("gganimate", priority = "core")` adds animation to `ggplot2` objects. 
-- The `r pkg("plotly", priority = "core")`
+- `r pkg("plotly", priority = "core")` also supports animation. When created from a ggplot object, a `frame` and `ids` aesthetic needs to be specified: i.e. `gg <- ggplot() + geom_point(aes(frame = xxx, ids = xxx)); ggplotly(gg)`. To create an animation from using the plotly syntax, there are the `animation_*` functions. 
 - `r pkg("animate")`
 
 # Multivariate
 
-One of the most common visualisations for high dimension data is scatterplot matrix. It can be created with `GGally::ggpairs()` and turned into interactive using `plotly::ggplotly()` to enable linked brushing to view the data at different variable combinations. The `r pkg("pairsD3")` package creates scatterplot matrices through D3 javascript library. 
+One of the most common visualisations for high dimension data is scatterplot matrix. It can be created with `GGally::ggpairs()` and turned into interactive using `plotly::ggplotly()` to enable linked brushing to view the data at different variable combinations. The `r pkg("pairsD3")` package creates scatterplot matrices through D3 JavaScript library. 
 
 When the multivariate relationship is attributed to more than two variables, a scatterplot matrix becomes insufficient and a family of technique, called tour, can be useful to explore the structure in high dimensional data. The tour technique animates a sequence of linear projections of high dimensional data and it has two components: 1) tour type: how the projection sequence is generated, and 2) display: how low-D projections are displayed. Different tours are available to select the projection sequences (grand tour: random selection, guided tour: based on projection pursuit, etc). The most common display is histograms for 1D projections and scatterplot for 2D projections. Other higher-D displays are also available, including the Chernoff face. 
 
@@ -68,7 +75,7 @@ Various general purpose packages can generate interactive maps:
 
 - plotly XXX
 
-The specialist map package `r pkg("leaflet", priority = "core")` package provides an R interface to the leaflet Javascript library and a collection of packages are available for additional customization:
+The specialist map package `r pkg("leaflet", priority = "core")` package provides an R interface to the leaflet JavaScript library and a collection of packages are available for additional customization:
 
 - `r pkg("leafpop")` allows static plots to be displayed in the leaflet popups,
 - `r pkg("leafsync")` displays multiple synced leaflet maps in small multiples,
@@ -95,9 +102,15 @@ When working with large scale spatial data, graphic libraries are usually used f
 
 # Networks and trees
 
-For network diagrams, the most common interactivity needed is to select and highlight connected nodes. Most of the dynamic networks interface with Javascript libraries:  `r pkg("networkD3")` (*D3.js*), `r pkg("visNetwork")` (*vis.js*), and `r pkg("sigmajs")` (*sigma.js*). All three packages can convert native R data frames or igraph objects into network diagrams. The packages `r pkg("networkD3")` and `r pkg("visNetwork")` provide single-line commands for different types of networks, while `r pkg("sigmajs")` builds the networks through a structured grammar approach.
+For network diagrams, the most common interactivity needed is to select and highlight connected nodes. Most of the dynamic networks interface with JavaScript libraries:  
 
-The `r pkg("collapsibleTree")` package allows users to click on tree nodes to expand and collapse complex trees through D3.js in the backend.
+- `r pkg("networkD3")` (*D3.js*) - note that the similar `d3Network` package is the legacy package that is no longer maintained. 
+- `r pkg("visNetwork")` (*vis.js*), and
+- `r pkg("sigmajs")` (*sigma.js*). 
+
+All three packages can convert native R data frames or igraph objects into network diagrams. The packages `r pkg("networkD3")` and `r pkg("visNetwork")` provide single-line commands for different types of networks, while `r pkg("sigmajs")` builds the networks through a structured grammar approach.
+
+- The `r pkg("collapsibleTree")` package allows users to click on tree nodes to expand and collapse complex trees through D3.js in the backend.
 
 # Miscellaneous
 
@@ -112,5 +125,5 @@ R also includes packages dedicated to specific interactive visualizations, often
 # Links
 
 - Book: [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com)
-- Book: [Javascript for R](https://book.javascript-for-r.com/)
+- Book: [JavaScript for R](https://book.javascript-for-r.com/)
 - Book: [Interactively exploring high-dimensional data and models in R](https://dicook.github.io/mulgar_book/)
