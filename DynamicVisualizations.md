@@ -18,44 +18,31 @@ Dynamic visualizations offers the flexibility for users to interact with the plo
 
 # General purpose
 
-To generically create linked plots use:
+The `htmlwidget` framework helps create interactive visualizations that require external JavaScript libraries. While typical R users may not directly interact with the  `htmlwidgets`/ `vegawidgets` packages (as they primarily target R developers), we include them in this task view since they underpin almost all the packages interfacing with JavaScript in R. From the perspective of package users, the framework is used within packages to transform your **R code** into **JavaScript visualizations**. Specifically, when creating a package interfacing JavaScript, deverlopers need to write 1) R bindings to convert your R code into a widget and 2) JavaScript bindings to link the widget to the imported JavaScript libraries. In this task view,  Packages directly interface with a particular JavaScript library will have the JS libraries specified in parentheses, e.g. The `plotly` package (*plotly.js*). 
 
-- `r pkg("crosstalk", priority = "core")` for brushing and filtering through a *SharedData* object
+The following two packages don't directly interface with JS libraries but are generally powerful to create interactive plots in R:
 
-The `htmlwidget` framework helps create interactive visualizations that require external JavaScript libraries. 
-While typical R users may not directly interact with the  `htmlwidgets`/ `vegawidgets` packages (as they primarily target R developers), we include them in this task view since they underpin almost all the packages interfacing with JavaScript in R. From the perspective of package users, the framework is used within packages to transform your **R code** into **JavaScript visualizations**. Specifically, when creating a package interfacing JavaScript, deverlopers need to write 
+- the `r pkg("crosstalk", priority = "core")` package enables linked brushing across multiple plots from htmlwidgets. It operates via a SharedData object in the R6 class and is theoretically applicable to all the htmlwidgets created by various packages. Current supported graphic packages include `plotly`, `leaflet`, and `rgl`. Developers of  interactive graphic package should consider integrating crosstalk within their package if linked brushing is not directly supported. 
 
-1) R bindings to convert your R code into a widget and 
-2) JavaScript bindings to link the widget to the imported JavaScript libraries. 
+- the `r pkg("r2d3")` package that binds raw D3 JavaScript codes to R data objects. This gives you full customisation on the interactive details but requires the skill to write JS code.
 
-Packages that interface with JavaScript libraries will include the JavaScript libraries specified in parentheses. The exception is
+The following packages can all create interactive graphics of basic types, including scatterplots, bar charts, histograms et). Most packages offer support to highlight on plot elements (dots, bars, lines etc) and displays tooltips upon hovering. This review includes the syntax usage of each package, as well as the additional plot types and interactive actions supported. 
 
-- the `r pkg("r2d3")` package that binds raw D3 JavaScript codes to R data objects.
+- The `r pkg("ggiraph", priority = "core")` package aims to expand the `ggplot2` paradigm to dynamic visualization by introducing an interactive verison of geoms: `geom_xxx_interactive()`. It supports customised hover effect (e.g. fill and stroke change on points) and tooltip (e.g. match tooltip background with point color). It also supports panning, zooming, lasso selection and add png download botton through the toolbar.
 
-## Packages constructed based on grammar of graphics
+- The `r pkg("plotly", priority = "core")` package (*plotly.js*) contains the `ggplotly()` function which turns ggplot2 objects directly into interactive plots. Plots can also be created using native plotly syntax: initialize with `plot_ly()`, specify shapes (markers, lines etc) through `add_*()`, control axes and legends with `layout()` and color with `colorbar()`. Variables in `plotly` is specified with a `~` upfront. Every plotly plot include the toolbar to allow panning, box/lasso selection, (selected) zoom in/out, and saving. It also supports brushed linking across multiple data plots, and a common use case is in scatterplot matrices. When a portion of the data is selected in one panel, it will be highlighted simultaneously across all the panels. Animation through `plotly` are introduced under the *Animation* section. More on `plotly` from Carson Sievert's book [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/).
 
-### `ggplot2`-inspired packages
+- In `r pkg("echarts4r")`(*echarts.js*), a plot is initialized by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the `e_*` functions, e.g. `e_line()`, `e_axis_labels()`, `e_theme()`. It covers most basic chart types, statistical graphics(confidence band, correlation matrix, etc), geospatial maps, some timeline (time series) display, and network diagrams. WebGL render is also supported, as well as using customised icons/ pictures in the plot. A unique interactive action supported by the package is to drag either end of the color/fill legend to filter the data within the range on the plot (see `e_visual_map()`).
 
-The package `ggplot2` has been one of the most widely-used visualization libraries in the R community, however, it is only designed to make static graphics. The following packages (functions) aim to expand the `ggplot2` paradigm to dynamic visualization: 
+- In the `r pkg("metricsgraphics")` package (*metricsgraphics.js*), a plot is initialized by `mjs_plot()`. Plot elements (line, bar, histogram, etc) and axis control are added with `mjs_*` functions. In addition, the package supports for drawing confidence bands (`mjs_add_confidence_band()`) and customized CSS rules (`mjs_add_css_rule()`).
 
-- The `r pkg("ggiraph", priority = "core")` package uses syntax like `geom_xxx_interactive()` to add tool tips and customized interactive effects. 
-- The `r pkg("plotly", priority = "core")` package contains the `ggplotly()` function which turns ggplot2 objects directly into interactive plots. 
+- In `r pkg("billboarder")` (*billboard.js* ), a plot is initialized by `billboarder()` and plot elements (shape, axes, legend etc) are specified through `bb_*()` functions. Zooming on time series plot is supported by selecting on the main plot (`bb_zoom()`) or on a subchart (`bb_subchart()`) 
 
-More on creating visualization from naive `plotly` syntax and animation through `plotly` are introduced in the next set of dotpoints and under the *Animation* section.
+- `r pkg("highcharter")` (*highcharts.js*) can plot a range of native R objects, including `data.frame`, `ts`, `xts`, `forecast`, and `survfit`. It also supports maps, network diagrams, and statistical plot (e.g. PCA plot after `princomp()`, correlation matrix). For temporal plots, it supports linked tracking across multiple series and zooming at various scales, through button clicking or dragging on the subchart. It also supports clicking to view the treemap at different hierarchical levels. 
 
-### Other grammar-based packages
+- `r pkg("googleVis")` (*Google Charts*) uses plot type like `gvis[ChartType]()` to specify the plot, e.g. `gvisScatterChart()`. Additional controls of plot elements are passed as a list of `options` inside the main function. It supports creating maps, interactive tables, treemap, network and sankey diagram, and calendar plot. 
 
-- The `r pkg("plotly", priority = "core")` package (*plotly.js*) initiates a plot with `plot_ly()` and uses `add_*()` to specify shapes to draw e.g. markers, lines. Axes and legends are controlled by `layout()` and color is controlled by `colorbar()`. Variables in `plotly` is specified with a `~` upfront. More on `plotly` in R from Carson Sievert's book [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/).
-- In `r pkg("echarts4r")` and `r pkg("echarty")` (*echarts.js*), A plot is initialised by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the corresponding function starting with `e_`.
-- Other packages behave similarly include `r pkg("metricsgraphics")` (*metricsgraphics.js*) and `r pkg("billboarder")` (*billboard.js* )
-  
-## Packages that specifies plot types
-
-Other packages provide one function for each plot type. This type of functions can be quick to type, while users may find some plot elements difficult to customized. 
-
-- `r pkg("highcharter")` (*highcharts.js*) can plot a range of native R objects, including `data.frame`, `ts`, `xts`, `forecast`, and `survfit`.
-- `r pkg("googleVis")` (*Google Charts*) can plot most basic chart types available in the Google Charts API.
-- Apart from basic plots, `r pkg("rAmCharts")` and `r pkg("rAmCharts4")` (*amcharts.js*) also include linking and brushing, check `amStockMultiSet()`.
+- `r pkg("rAmCharts")` and `r pkg("rAmCharts4")` (*amcharts.js*) uses plot type syntax `amChartType()` to specify the plot. It supports selection of multiple datasets through selection box, see `amStockMultiSet()`. 
 
 # Animation
 
