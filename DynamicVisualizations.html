@@ -438,7 +438,7 @@ is initialized by <code>e_charts()</code> and different plot elements
 functions, e.g. <code>e_line()</code>, <code>e_axis_labels()</code>,
 <code>e_theme()</code>. It covers most basic chart types, statistical
 graphics(confidence band, correlation matrix, etc), geospatial maps,
-some timeline (time series) displas, and network diagrams. WebGL render
+some timeline (time series) displays, and network diagrams. WebGL render
 is also supported, as well as using customized icons/ pictures in the
 plot. A unique interactive action supported by the package is to drag
 either end of the color/fill legend to filter the data within the range
@@ -459,7 +459,7 @@ main plot (<code>bb_zoom()</code>) or a subchart
 <li><p>In <code>r pkg(&quot;highcharter&quot;)</code> (<em>highcharts.js</em>), a
 plot is initialized by <code>hchart()</code> or built with
 <code>hc_add_series()</code>. Support on plot elements (legend, color,
-axix, etc) are adjusted through <code>hc_*()</code> functions. It also
+axis, etc) are adjusted through <code>hc_*()</code> functions. It also
 supports maps, network diagrams, and statistical plots (e.g. PCA plot
 after <code>princomp()</code>, correlation matrix). For temporal plots,
 it supports linked tracking across multiple series and zooming at
@@ -477,8 +477,12 @@ network and sankey diagrams, and calendar plots.</p></li>
 syntax <code>amChartType()</code> to specify the plot. It supports the
 selection of multiple datasets through the selection box, see
 <code>amStockMultiSet()</code>.</p></li>
+<li><p><code>r pkg(&quot;tcltk&quot;)</code> provides access to the
+platform-independent Tcl scripting language and Tk GUI elements, forming
+the basis for other packages.</p></li>
+<li><p><code>r pkg(&quot;rgl&quot;)</code> provides 3D visualisations built with
+OpenGL or WebGL as the rendering backend.</p></li>
 </ul>
-<p>XXX tcltk and rgl/opengl</p>
 </div>
 <div id="animation" class="section level1">
 <h1>Animation</h1>
@@ -530,6 +534,8 @@ display with three.js for better interactive manipulations (rotation,
 pan, selection, brushing with color and time control)</li>
 <li><code>r pkg(&quot;langevitour&quot;)</code> implements the langevin dynamics
 to generate projection sequence and builds the display with D3.js</li>
+<li><code>r pkg(&quot;woylier&quot;)</code></li>
+<li><code>r pkg(&quot;ferrn&quot;)</code></li>
 </ul>
 <p>Another class of interactive visualisation in R is the
 <code>r pkg(&quot;loon&quot;)</code> toolkit. The graphic system is written in TCL

@@ -33,20 +33,21 @@ The following packages can all create interactive graphics of basic types, inclu
 
 - The `r pkg("ggiraph", priority = "core")` package aims to expand the `ggplot2` paradigm to dynamic visualization by introducing an interactive version of geoms: `geom_xxx_interactive()`. It supports panning, zooming, lasso selection, and adding png download button through the toolbar.
 
-- In `r pkg("echarts4r")`(*echarts.js*), a plot is initialized by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the `e_*` functions, e.g. `e_line()`, `e_axis_labels()`, `e_theme()`. It covers most basic chart types, statistical graphics(confidence band, correlation matrix, etc), geospatial maps, some timeline (time series) displas, and network diagrams. WebGL render is also supported, as well as using customized icons/ pictures in the plot. A unique interactive action supported by the package is to drag either end of the color/fill legend to filter the data within the range on the plot (see `e_visual_map()`).
+- In `r pkg("echarts4r")`(*echarts.js*), a plot is initialized by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the `e_*` functions, e.g. `e_line()`, `e_axis_labels()`, `e_theme()`. It covers most basic chart types, statistical graphics(confidence band, correlation matrix, etc), geospatial maps, some timeline (time series) displays, and network diagrams. WebGL render is also supported, as well as using customized icons/ pictures in the plot. A unique interactive action supported by the package is to drag either end of the color/fill legend to filter the data within the range on the plot (see `e_visual_map()`).
 
 - In the `r pkg("metricsgraphics")` package (*metricsgraphics.js*), a plot is initialized by `mjs_plot()`. Plot elements (line, bar, histogram, etc) and axis control are added with `mjs_*` functions. In addition, the package supports drawing confidence bands (`mjs_add_confidence_band()`) and customized CSS rules (`mjs_add_css_rule()`).
 
 - In `r pkg("billboarder")` (*billboard.js* ), a plot is initialized by `billboarder()` and plot elements (shape, axes, legend, etc) are specified through `bb_*()` functions. Zooming on the time series plot is supported by selecting the main plot (`bb_zoom()`) or a subchart (`bb_subchart()`) 
 
-- In `r pkg("highcharter")` (*highcharts.js*), a plot is initialized by `hchart()` or built with `hc_add_series()`. Support on plot elements (legend, color, axix, etc) are adjusted through `hc_*()` functions. It also supports maps, network diagrams, and statistical plots (e.g. PCA plot after `princomp()`, correlation matrix). For temporal plots, it supports linked tracking across multiple series and zooming at various scales, through button clicking or dragging on the subchart. It also supports clicking to view the treemap at different hierarchical levels. 
+- In `r pkg("highcharter")` (*highcharts.js*), a plot is initialized by `hchart()` or built with `hc_add_series()`. Support on plot elements (legend, color, axis, etc) are adjusted through `hc_*()` functions. It also supports maps, network diagrams, and statistical plots (e.g. PCA plot after `princomp()`, correlation matrix). For temporal plots, it supports linked tracking across multiple series and zooming at various scales, through button clicking or dragging on the subchart. It also supports clicking to view the treemap at different hierarchical levels. 
 
 - `r pkg("googleVis")` (*Google Charts*) uses plot type like `gvis[ChartType]()` to specify the plot, e.g. `gvisScatterChart()`. Additional controls of plot elements are passed as a list of `options` inside the main function. It supports creating maps, interactive tables, treemaps, network and sankey diagrams, and calendar plots. 
 
 - `r pkg("rAmCharts")` and `r pkg("rAmCharts4")` (*amcharts.js*) uses plot type syntax `amChartType()` to specify the plot. It supports the selection of multiple datasets through the selection box, see `amStockMultiSet()`. 
 
-XXX tcltk and rgl/opengl
+- `r pkg("tcltk")` provides access to the platform-independent Tcl scripting language and Tk GUI elements, forming the basis for other packages. 
 
+- `r pkg("rgl")` provides 3D visualisations built with OpenGL or WebGL as the rendering backend.
 
 # Animation
 
@@ -65,6 +66,8 @@ When the multivariate relationship is attributed to more than two variables, a s
 - `r pkg("liminal")` implements linked display view to understanding embedding algorithms such as tSNE through `r pkg("vegawidgets")`
 - `r pkg("detourr")` implements the 2D and 3D scatterplot display with three.js for better interactive manipulations (rotation, pan, selection, brushing with color and time control)
 - `r pkg("langevitour")` implements the langevin dynamics to generate projection sequence and builds the display with D3.js
+- `r pkg("woylier")`
+- `r pkg("ferrn")`
 
 Another class of interactive visualisation in R is the `r pkg("loon")` toolkit. The graphic system is written in TCL and accessed in R via the `tcltk` package. 
 
