@@ -19,7 +19,7 @@ The listed packages are grouped into general purpose and those designed for spec
 
 # General purpose
 
-Under the hood, the `r pkg("htmlwidgets")"` and `r pkg("vegawidget")` packages interface R with external JS libraries. These packages are used as a foundation by many other packages. From the user perspective, these frameworks are used to transform your R code into JS visualizations. Specifically, when creating a package interfacing JS, developers need to write 1) R bindings to convert your R code into a widget and 2) JavaScript bindings to link the widget to the imported JS libraries. This is indicated on the package list by specifying the JS library in parentheses (*XXX.js*). 
+Under the hood, the `r pkg("htmlwidgets")` and `r pkg("vegawidget")` packages interface R with external JS libraries. These packages are used as a foundation by many other packages. From the user perspective, these frameworks are used to transform your R code into JS visualizations. Specifically, when creating a package interfacing JS, developers need to write 1) R bindings to convert your R code into a widget and 2) JavaScript bindings to link the widget to the imported JS libraries. This is indicated on the package list by specifying the JS library in parentheses (*XXX.js*). 
 
 The following two packages are generally useful for creating interactive plots in R:
 
@@ -33,7 +33,7 @@ The following packages can all create interactive graphics of basic types, inclu
 
 - The `r pkg("ggiraph", priority = "core")` package aims to expand the `ggplot2` paradigm to dynamic visualization by introducing an interactive version of geoms: `geom_xxx_interactive()`. It supports panning, zooming, lasso selection, and adding png download button through the toolbar.
 
-- In `r pkg("echarts4r")`(*echarts.js*), a plot is initialized by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the `e_*` functions, e.g. `e_line()`, `e_axis_labels()`, `e_theme()`. It covers most basic chart types, statistical graphics(confidence band, correlation matrix, etc), geospatial maps, some timeline (time series) displays, and network diagrams. WebGL render is also supported, as well as using customized icons/ pictures in the plot. A unique interactive action supported by the package is to drag either end of the color/fill legend to filter the data within the range on the plot (see `e_visual_map()`).
+- In `r pkg("echarts4r")` (*echarts.js*), a plot is initialized by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the `e_*` functions, e.g. `e_line()`, `e_axis_labels()`, `e_theme()`. It covers most basic chart types, statistical graphics(confidence band, correlation matrix, etc), geospatial maps, some timeline (time series) displays, and network diagrams. WebGL render is also supported, as well as using customized icons/ pictures in the plot. A unique interactive action supported by the package is to drag either end of the color/fill legend to filter the data within the range on the plot (see `e_visual_map()`).
 
 - In the `r pkg("metricsgraphics")` package (*metricsgraphics.js*), a plot is initialized by `mjs_plot()`. Plot elements (line, bar, histogram, etc) and axis control are added with `mjs_*` functions. In addition, the package supports drawing confidence bands (`mjs_add_confidence_band()`) and customized CSS rules (`mjs_add_css_rule()`).
 
@@ -51,30 +51,32 @@ The following packages can all create interactive graphics of basic types, inclu
 
 # Animation
 
-- `r pkg("gganimate", priority = "core")` adds animation to `ggplot2` objects. 
-- `r pkg("plotly", priority = "core")` also supports animation. When created from a ggplot object, a `frame` and `ids` aesthetic needs to be specified: i.e. `gg <- ggplot() + geom_point(aes(frame = xxx, ids = xxx)); ggplotly(gg)`. To create an animation from using the plotly syntax, there are the `animation_*` functions. 
-- `r pkg("animate")`
+- `r pkg("gganimate", priority = "core")` extends the grammar of graphics in `ggplot2` to describe animations.
+- `r pkg("plotly", priority = "core")` also supports animation. When created from a ggplot object, a `frame` and `ids` aesthetic needs to be specified: i.e. `gg <- ggplot() + geom_point(aes(frame = xxx, ids = xxx)); ggplotly(gg)`. In the plotly syntax, the `animation_*` functions are used to create animations.
+- `r pkg("animate")` provides general purpose animation including generating maze, playing chess, and animating info vis, using the base R syntax.
 
 # Multivariate
 
-One of the most common visualisations for high dimension data is scatterplot matrix. It can be created with `GGally::ggpairs()` and turned into interactive using `plotly::ggplotly()` to enable linked brushing to view the data at different variable combinations. The `r pkg("pairsD3")` package creates scatterplot matrices through D3 JS library. 
+One of the most common visualisations for high dimension data is scatterplot matrix. It can be created with `GGally::ggpairs()` and turned into interactive using `plotly::ggplotly()` to enable linked brushing to view the data at different variable combinations. 
+
+- The `r pkg("pairsD3")` package creates scatterplot matrices through D3 JS library. 
 
 When the multivariate relationship is attributed to more than two variables, a scatterplot matrix becomes insufficient and a family of technique, called tour, can be useful to explore the structure in high dimensional data. The tour technique animates a sequence of linear projections of high dimensional data and it has two components: 1) tour type: how the projection sequence is generated, and 2) display: how low-D projections are displayed. Different tours are available to select the projection sequences (grand tour: random selection, guided tour: based on projection pursuit, etc). The most common display is histograms for 1D projections and scatterplot for 2D projections. Other higher-D displays are also available, including the Chernoff face. 
 
 - `r pkg("tourr")` implements varies tourr types (`grand_tour`, `guided_tour`, `planned_tour`, `local_tour`, etc) and displays (`animate_xy`: 2D, `animate_dist`: 1D, etc) to create frame-by-frame animation. 
-- `r pkg("spinifex")` implements the manual tourr algorithm (`manual_tour`)
-- `r pkg("liminal")` implements linked display view to understanding embedding algorithms such as tSNE through `r pkg("vegawidgets")`
-- `r pkg("detourr")` implements the 2D and 3D scatterplot display with three.js for better interactive manipulations (rotation, pan, selection, brushing with color and time control)
-- `r pkg("langevitour")` implements the langevin dynamics to generate projection sequence and builds the display with D3.js
-- `r pkg("woylier")`
-- `r pkg("ferrn")`
+- `r pkg("spinifex")` implements the manual tourr algorithm (`manual_tour`).
+- `r pkg("liminal")` implements linked display view to understanding embedding algorithms such as tSNE through `r pkg("vegawidgets")`.
+- `r pkg("detourr")` implements the 2D and 3D scatterplot display with three.js for better interactive manipulations (rotation, pan, selection, brushing with color and time control).
+- `r pkg("langevitour")` implements the langevin dynamics to generate projection sequence and builds the display with D3.js.
+- `r pkg("woylier")` implements the Given interpolation method to generate projection sequences for rotation variant projection pursuit indexes (those index values change when rotating the projection within the plane), e.g. the spline index.
+- `r pkg("ferrn")` provides diagnostic plots (track index values and visualize the basis space) to the optimisation routine of the projection pursuit guided tour.
 
 Another class of interactive visualisation in R is the `r pkg("loon")` toolkit. The graphic system is written in TCL and accessed in R via the `tcltk` package. 
 
 # Temporal
 
 - `r pkg("tsibbletalk")` creates shared `tsibble` objects to produce linked plots of time series, with other data plots using `r pkg("crosstalk", priority = "core")`.
-- `r pkg("dygraphs")` (*dygraphs.js*) XXX
+- `r pkg("dygraphs")` (*dygraphs.js*) creates interactive time series plots for `xts` objects and supports a range of features, including series highlights, value tracking, annotating event and confidence interval, range selection, and rolling window smoothing.
 
 # Maps
 
