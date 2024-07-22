@@ -19,7 +19,7 @@ The listed packages are grouped into general purpose and those designed for spec
 
 # General purpose
 
-Under the hood, the `r pkg("htmlwidgets")` and `r pkg("vegawidget")` packages interface R with external JS libraries. These packages are used as a foundation by many other packages. From the user perspective, these frameworks are used to transform your R code into JS visualizations. Specifically, when creating a package interfacing JS, developers need to write 1) R bindings to convert your R code into a widget and 2) JavaScript bindings to link the widget to the imported JS libraries. This is indicated on the package list by specifying the JS library in parentheses (*XXX.js*). 
+Under the hood, the package `r pkg("htmlwidgets")` and `r pkg("vegawidget")` interface R with external JS libraries. These packages are used as a foundation by many other packages. From the user perspective, these frameworks are used to transform the R code into JS visualizations. Specifically, when creating a package interfacing JS, developers need to write 1) R bindings to convert your R code into a widget and 2) JavaScript bindings to link the widget to the imported JS libraries. This is indicated on the package list by specifying the JS library in parentheses (*XXX.js*). 
 
 The following two packages are generally useful for creating interactive plots in R:
 
@@ -113,24 +113,27 @@ When working with large scale spatial data, graphic libraries are usually used f
 
 For network diagrams, the most common interactivity needed is to select and highlight connected nodes. Most of the dynamic networks interface with JS libraries:  
 
-- `r pkg("networkD3")` (*D3.js*) - note that the similar `d3Network` package is the legacy package that is no longer maintained. 
-- `r pkg("visNetwork")` (*vis.js*), and
-- `r pkg("sigmajs")` (*sigma.js*). 
+- networkD3 (D3.js) 
+- visNetwork (vis.js)
 
-All three packages can convert native R data frames or igraph objects into network diagrams. The packages `r pkg("networkD3")` and `r pkg("visNetwork")` provide single-line commands for different types of networks, while `r pkg("sigmajs")` builds the networks through a structured grammar approach.
+The `r pkg("sigmajs")` package builds the networks through a structured grammar approach.
 
-- The `r pkg("collapsibleTree")` package allows users to click on tree nodes to expand and collapse complex trees through D3.js in the backend.
 
 # Miscellaneous
 
 R also includes packages dedicated to specific interactive visualizations, often by interfacing with relevant JS libraries.
 
-  - small multiples: `r pkg("trelliscopejs")` (*trelliscope.js*) 
-  - heatmap: `r pkg("heatmaply")` (*plotly.js*), `r pkg("d3heatmap")` (*D3.js*), `r pkg("iheatmapr")` (*plotly.js*).
-  - parallel coordinate plot: `r pkg("parallelPlot")` (*d3.js*)
-  - timeline: `r pkg("timevis")` (*vis.js*) 
-  - upset plot: `r pkg("upsetjs")` (*upset.js*)
+- The `r pkg("trelliscopejs")` package (*trelliscope.js*) enables the interactive visualization of small multiples, making it particularly suitable for visualising large collections of multiples that cannot be displayed on a single screen through facets. The package offers `facet_trelliscope()`, as a drop-in replacement for  `facet_wrap/grid()`, as well as  `trelliscope()`, a more general function that fits into the tidy workflow where data transformation(compute summaries, models, etc) can be handled by nested data and list-column. 
+- heatmap: 
+  - The `r pkg("heatmaply")` package (*plotly.js*) allows interactive heatmaps with actions like cell-hover tooltips and zooming into specific areas. It supports data transformation such as scaling, normalizing, and percentizing, and the dendrograms for viewing the structure of observations can be customized using the `dendextend` package.
+  - The `r pkg("iheatmapr")` package (*plotly.js*) supports heatmaps with more complex subplots in addition to clustering dendrograms. It includes annotations for group categories and customizable plots for row and column summary statistics. It also supports displaying multiple heatmaps side-by-side. 
+- The `r pkg("parallelPlot")` package (*d3.js*) creates Parallel Coordinate Plot (PCP) and scatterplot matrix with linked brushing to hightlight points and ranges on the PCP axis.
+- The `r pkg("collapsibleTree")` package creates collapsible tree diagram to visualise hierarchical data structures based on D3.js. It supports clicking on tree nodes to expand and collapse child nodes, as well as tooltips and zooming.
+- The `r pkg("timevis")` package (*vis.js*) creates timeline visualisation for project management and event scheduling. It support dragging and zooming on the time axis and is compatible with crosstalk for linked brushing. 
+
   
+
+
 # Links
 
 - Book: [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com)
