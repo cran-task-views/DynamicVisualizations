@@ -29,13 +29,11 @@ The following two packages are generally useful for creating interactive plots i
 
 The following packages can all create interactive graphics of basic types, including scatterplots, bar charts, histograms et). Most packages offer support to highlight plot elements (dots, bars, lines, etc) and display tooltips upon hovering. This review includes the syntax usage of each package, as well as the additional plot types (map, network diagram, etc) and interactive actions supported. 
 
-- The `r pkg("plotly", priority = "core")` package (*plotly.js*) contains the `ggplotly()` function which turns ggplot2 objects directly into interactive plots. Plots can also be created using native plotly syntax: initialize with `plot_ly()`, specify shapes (markers, lines, etc) through `add_*()`, control axes and legends with `layout()`, and color with `colorbar()`. Variables in `plotly` is specified with a `~` upfront. Every `plotly` plot includes the toolbar to allow panning, box/lasso selection, (selected) zoom in/out, and saving. It also supports brushed linking across multiple data plots, and a common use case is in scatterplot matrices. When a portion of the data is selected in one panel, it will be highlighted simultaneously across all the panels. Animation through `plotly` is introduced under the *Animation* section. More on `plotly` from Carson Sievert's book [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/).
+- The `r pkg("plotly", priority = "core")` package (*plotly.js*) contains the `ggplotly()` function which turns ggplot2 objects directly into interactive plots. Plots can also be created using native plotly syntax: initialize with `plot_ly()`, specify shapes (markers, lines, etc) through `add_*()`, control axes and legends with `layout()`, and color with `colorbar()`. Variables in `plotly` is specified with a `~` upfront. Every `plotly` plot includes the toolbar to allow panning, box/lasso selection, (selected) zoom in/out, and saving. It also supports brushed linking across multiple data plots, and a common use case is in scatterplot matrices. When a portion of the data is selected in one panel, it will be highlighted simultaneously across all the panels. Animation through `plotly` is introduced under the *Animation* section. More on `plotly` from Carson Sievert's book [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/). (support clicking on the legend for show/ hide categories)
 
 - The `r pkg("ggiraph", priority = "core")` package aims to expand the `ggplot2` paradigm to dynamic visualization by introducing an interactive version of geoms: `geom_xxx_interactive()`. It supports panning, zooming, lasso selection, and adding png download button through the toolbar.
 
 - In `r pkg("echarts4r")` (*echarts.js*), a plot is initialized by `e_charts()` and different plot elements (shapes, axes, theme, etc) are built with the `e_*` functions, e.g. `e_line()`, `e_axis_labels()`, `e_theme()`. It covers most basic chart types, statistical graphics(confidence band, correlation matrix, etc), geospatial maps, some timeline (time series) displays, and network diagrams. WebGL render is also supported, as well as using customized icons/ pictures in the plot. A unique interactive action supported by the package is to drag either end of the color/fill legend to filter the data within the range on the plot (see `e_visual_map()`).
-
-- In the `r pkg("metricsgraphics")` package (*metricsgraphics.js*), a plot is initialized by `mjs_plot()`. Plot elements (line, bar, histogram, etc) and axis control are added with `mjs_*` functions. In addition, the package supports drawing confidence bands (`mjs_add_confidence_band()`) and customized CSS rules (`mjs_add_css_rule()`).
 
 - In `r pkg("billboarder")` (*billboard.js* ), a plot is initialized by `billboarder()` and plot elements (shape, axes, legend, etc) are specified through `bb_*()` functions. Zooming on the time series plot is supported by selecting the main plot (`bb_zoom()`) or a subchart (`bb_subchart()`) 
 
@@ -80,26 +78,31 @@ Another class of interactive visualisation in R is the `r pkg("loon")` toolkit. 
 
 # Maps
 
-Various general purpose packages can generate interactive maps:
+## General purpose packages 
 
-- plotly XXX
+- The `r pkg("plotly")` package provides functionality for general-purpose interactive maps that fit into the plotly ecosystem, supporting features like linked brushing. Simple, quick basemaps can be created with the `plot_mapbox()` and `plot_geo()` constructor. For more complex, data-driven maps (e.g. with `sf`), use the `plot_ly()` constructor or `ggplotly()` on a `ggplot2` object.
 
-The specialist map package `r pkg("leaflet", priority = "core")` package provides an R interface to the leaflet JS library and a collection of packages are available for additional customization:
+- The `r pkg("ggiraph")` package supports converting `ggplot2` objects into interactive graphs. It allows flexible customisation options for interactivity, including tooltip text, onclick effects, CSS for hover and select, allowing additional information to be incorporated into the visualization (e.g. linking to an external website upon clicking).
 
-- `r pkg("leafpop")` allows static plots to be displayed in the leaflet popups,
-- `r pkg("leafsync")` displays multiple synced leaflet maps in small multiples,
-- `r pkg("leaflegend")` adds customized images as marks and in the legend, 
-- `r pkg("leaflet.multiopacity")` provides controls the opacity over different plot layers
-- `r pkg("leafem")` supports GIS-related layers, (e.g. Cloud Optimized Geotiff (COG), stars/rasters images), to leaflet map,
-- `r pkg("leafgl")` has the capacity to render large scale data (e.g. 1 million points or 100k polygons) in leaflet with the WebGL framework,
-- `r pkg("leaflet.minicharts")` renders glyphs on leaflet maps.
-- `r pkg("mapedit")` provides interactive editing on leaflet maps
-- The `r pkg("tmap")` package provides a new grammar tailored for thematic maps (both static and interactive) and leaflet for interactive map rendering.
+- The `r pkg("highcharter")` package supports maps created from data frames/ tibble and the `geo_json` class from the `geojsonio` package. It allows customizatin of tooltips and enables legend clicking to show or hide categories. 
 
+## Specialized map packages
 
-For exploratory data analysis, it comes handy to able to create maps quickly with short syntax to plot the geospatial data. 
+The `r pkg("leaflet", priority = "core")` package is one of the most popular JS libraries for interactive maps. It supports creating maps for a wide range of R objects, including data frames, sf, GeoJSON/TopoJSON, raster images from the `terra` or `raster` packages. The package allows flexible customization of display and interactive options: enhencing tooltips and labels with CSS, changing basemap styles and showing/hideing layers through clicking the legend, customized marker icons via URL links and Font Awesome, a variety of basemap options, (including Open Street Map, Stamen, Stadia, ESRI, and customized map tiles), distance and area calculation from clicking points on the map (with `addMeasure()`), a mini global map for zooming, just to name a few. Leaflet maps can cross-talk with other interactive visualizations through the `r pkg("crosstalk")` package. The ecosystem is further enhanced through plugins:
 
-- `r pkg("mapview")` is such a package for creating quick leaflet and mapdeck maps from common spatial classes in R (`sf`, `raster`, `stars`, etc). 
+- `r pkg("leafpop")`: display static plots in the tooltip popups,
+- `r pkg("leafsync")`: display multiple synced leaflet maps in small multiples,
+- `r pkg("leaflet.minicharts")`:  display glyphs (pie and bar), with animation, on the map.
+- `r pkg("leaflegend")`: add customized images as marks and in the legend, 
+- `r pkg("leaflet.multiopacity")`: provide controls the opacity over different plot layers
+- `r pkg("leafem")`: support GIS-related layers, (e.g. Cloud Optimized Geotiff (COG), stars/rasters images)
+- `r pkg("leafgl")`: render large scale data (e.g. 1 million points or 100k polygons) with the WebGL framework,
+
+The `r pkg("tmap")` package provides a ggplot2-styled grammar of graphic for thematic maps (both static and interactive) and uses leaflet for interactive map rendering. 
+
+The `r pkg("mapview")` package creates quick leaflet and mapdeck maps with short syntax from common spatial classes in R such as `sf`, `raster` and `stars`.
+
+## Large scale rendering
 
 When working with large scale spatial data, graphic libraries are usually used for rendering maps and this includes 
 
