@@ -88,38 +88,34 @@ Another class of interactive visualisation in R is the `r pkg("loon")` toolkit. 
 
 ## Specialized map packages
 
+### The leaflet family
+
 The `r pkg("leaflet", priority = "core")` package is one of the most popular JS libraries for interactive maps. It supports creating maps for a wide range of R objects, including data frames, sf, GeoJSON/TopoJSON, raster images from the `terra` or `raster` packages. The package allows flexible customization of display and interactive options: enhencing tooltips and labels with CSS, changing basemap styles and showing/hideing layers through clicking the legend, customized marker icons via URL links and Font Awesome, a variety of basemap options, (including Open Street Map, Stamen, Stadia, ESRI, and customized map tiles), distance and area calculation from clicking points on the map (with `addMeasure()`), a mini global map for zooming, just to name a few. Leaflet maps can cross-talk with other interactive visualizations through the `r pkg("crosstalk")` package. The ecosystem is further enhanced through plugins:
 
-- `r pkg("leafpop")`: display static plots in the tooltip popups,
-- `r pkg("leafsync")`: display multiple synced leaflet maps in small multiples,
-- `r pkg("leaflet.minicharts")`:  display glyphs (pie and bar), with animation, on the map.
-- `r pkg("leaflegend")`: add customized images as marks and in the legend, 
-- `r pkg("leaflet.multiopacity")`: provide controls the opacity over different plot layers
-- `r pkg("leafem")`: support GIS-related layers, (e.g. Cloud Optimized Geotiff (COG), stars/rasters images)
-- `r pkg("leafgl")`: render large scale data (e.g. 1 million points or 100k polygons) with the WebGL framework,
+- `r pkg("leafpop")` displays static plots in the tooltip popups,
+- `r pkg("leafsync")` displays multiple synced leaflet maps in small multiples,
+- `r pkg("leaflet.minicharts")` displays glyphs (pie and bar), with animation, on the map.
+- `r pkg("leaflegend")` adds customized images as marks and in the legend, 
+- `r pkg("leaflet.multiopacity")` provides controls the opacity over different plot layers
+- `r pkg("leafem")` supports GIS-related layers, (e.g. Cloud Optimized Geotiff (COG), stars/rasters images)
+- `r pkg("leafgl")` renders large scale data (e.g. 1 million points or 100k polygons) with the WebGL framework,
 
-The `r pkg("tmap")` package provides a ggplot2-styled grammar of graphic for thematic maps (both static and interactive) and uses leaflet for interactive map rendering. 
+### Others
 
-The `r pkg("mapview")` package creates quick leaflet and mapdeck maps with short syntax from common spatial classes in R such as `sf`, `raster` and `stars`.
+- The `r pkg("tmap")` package provides a ggplot2-styled grammar of graphic for thematic maps (both static and interactive) and uses leaflet to render interactive maps. 
+- The `r pkg("mapview")` package creates quick leaflet and mapdeck maps with short syntax from common spatial classes in R such as `sf`, `raster` and `stars`.
+- The `r pkg("mapboxer")` package interfaces with Mapbox GL JS to create interactive maps. It leverages resources from the JS library for basemap styles, aesthetics controls, interactive controls, including interactive filtering ("expressions") and point clustering. 
+- The `r pkg("deckgl")` package interfaces with deckgl for interactive maps. It offers an interactive editor to fine tune the map (`add_json_editor()`).
+- The `r pkg("mapdeck")` package interactive visualization for large data sets via Mapbox GL and Deck.gl. It supports a wider set of objects including data frame, sf (sfencoded, sfencodedLite), geojson/json/GeoJSON.
 
-## Large scale rendering
+# Networks
 
-When working with large scale spatial data, graphic libraries are usually used for rendering maps and this includes 
+Packages are available for plotting simple networks:
 
-- `r pkg("mapboxer")` via Mapbox, 
-- `r pkg("deckgl")` via Deck.gl, and 
-- `r pkg("mapdeck")` via Mapbox GL and Deck.gl.
-
-
-
-# Networks and trees
-
-For network diagrams, the most common interactivity needed is to select and highlight connected nodes. Most of the dynamic networks interface with JS libraries:  
-
-- networkD3 (D3.js) 
-- visNetwork (vis.js)
-
-The `r pkg("sigmajs")` package builds the networks through a structured grammar approach.
+- The `r pkg("sigmajs")` package has its own grammar for constructing network diagrams. It supports data structure from `igraph` and `gexf` and can use various `igraph` layouts to display the network. The package has also implemented plugins from the `sigma.js`, which includes highlight neighbour nodes and apply customised images for nodes.
+- The `r pkg("networkD3")` package (*D3.js*) produces simple/force network, sankey diagram, dendrogram. The visualization can be created from `igraph` objects.
+- The `r pkg("visNetwork")` package (*vis.js*) creates network diagrams through node and edge data frames. It support visualizing classification tree results from the `rpart` package.
+- The `r pkg("collapsibleTree")` package creates collapsible tree diagram to visualise hierarchical data structures based on D3.js. It supports clicking on tree nodes to expand and collapse child nodes, as well as tooltips and zooming.
 
 
 # Miscellaneous
@@ -131,11 +127,7 @@ R also includes packages dedicated to specific interactive visualizations, often
   - The `r pkg("heatmaply")` package (*plotly.js*) allows interactive heatmaps with actions like cell-hover tooltips and zooming into specific areas. It supports data transformation such as scaling, normalizing, and percentizing, and the dendrograms for viewing the structure of observations can be customized using the `dendextend` package.
   - The `r pkg("iheatmapr")` package (*plotly.js*) supports heatmaps with more complex subplots in addition to clustering dendrograms. It includes annotations for group categories and customizable plots for row and column summary statistics. It also supports displaying multiple heatmaps side-by-side. 
 - The `r pkg("parallelPlot")` package (*d3.js*) creates Parallel Coordinate Plot (PCP) and scatterplot matrix with linked brushing to hightlight points and ranges on the PCP axis.
-- The `r pkg("collapsibleTree")` package creates collapsible tree diagram to visualise hierarchical data structures based on D3.js. It supports clicking on tree nodes to expand and collapse child nodes, as well as tooltips and zooming.
 - The `r pkg("timevis")` package (*vis.js*) creates timeline visualisation for project management and event scheduling. It support dragging and zooming on the time axis and is compatible with crosstalk for linked brushing. 
-
-  
-
 
 # Links
 
