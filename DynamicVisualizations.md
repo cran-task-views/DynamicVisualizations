@@ -2,7 +2,7 @@
 name: DynamicVisualizations
 topic: Dynamic Graphics
 maintainer: Dianne Cook, Sherry Zhang
-email: dicook@monash.edu
+email: huizezhangsh@gmail.com
 version: 2024-07-23
 source: https://github.com/cran-task-views/DynamicVisualizations/
 ---
