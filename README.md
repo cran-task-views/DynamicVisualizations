@@ -1,4 +1,4 @@
-# CRAN Task View: DynamicVisualizations
+## CRAN Task View: Dynamic Visualizations and Interactive Graphics
 
 **URL:** <https://CRAN.R-project.org/view=DynamicVisualizations>
 
