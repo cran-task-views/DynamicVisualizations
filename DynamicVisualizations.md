@@ -18,7 +18,7 @@ The listed packages are grouped into general-purpose packages and those designed
 
 The `r pkg("crosstalk", priority = "core")`  package enables linked brushing across interactive plots created from `htmlwidgets`, rather than creating interactive plots itself. Linked brushing is an interactive action useful for viewing the data from multiple visualizations to identify clusters, outliers, or other structure in the data. Compatible widgets with the crosstalk framework include `plotly` and `leaflet`. 
 
-The `r pkg("r2d3")` package binds raw [D3.js](https://d3js.org/) codes to R data objects, allowing D3 code to run with R-native data objects. This approach offers full customization of interactive details using JS but requires writing JS code.
+The `r pkg("r2d3")` package binds raw [D3.js](https://d3js.org/) codes to R data objects, allowing D3 code to run with R-native data objects. This approach offers full customization of interactive details using JS but requires writing JS code. Packages built on the `r2d3` framework: `r pkg("ddplot")` creates animated histogram and line chart upon clicking, among other plot types.  
 
 The following packages can all create interactive graphics of basic types, including scatterplots, bar charts, histograms etc. Most packages offer support to highlight plot elements (dots, bars, lines, etc.) and display tooltips upon hovering. This review covers the syntax for plotting, as well as the interactive actions and plot types supported. 
 
