@@ -145,7 +145,7 @@ R also includes packages dedicated to specific interactive visualizations, often
 
 - The `r pkg("iheatmapr")` package (*plotly.js*) supports heatmaps with more complex subplots in addition to clustering dendrograms. It includes annotations for group categories and customizable plots for row and column summary statistics. It also supports displaying multiple heatmaps side-by-side. 
 
-- The `r pkg("tcltk")` package provides access to the platform-independent Tcl scripting language and Tk GUI elements, forming the basis for other packages. 
+- The `tcltk` package (part of base packages) provides access to the platform-independent Tcl scripting language and Tk GUI elements, forming the basis for other packages.
 
 - The `r pkg("rgl")` package provides 3D visualizations built with OpenGL or WebGL as the rendering backend.
 
