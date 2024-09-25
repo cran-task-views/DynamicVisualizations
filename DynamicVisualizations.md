@@ -45,6 +45,8 @@ The following packages can all create interactive graphics of basic types, inclu
 
 - The `r pkg("animate")` package supports creating animations using base R syntax and is powered by D3.js. 
 
+- The `r pkg("animation")` package provides a gallery of animated illustrations of common statistical concepts, such as bootstrapping and the Central Limit Tehorem (CLT), designed for teaching purposes.
+
 
 ## Multivariate
 
