@@ -60,7 +60,7 @@ When the multivariate relationship is attributed to more than two variables, a s
 
 - `r pkg("spinifex")` implements the manual tourr algorithm (`manual_tour`).
 
-- `r pkg("liminal")` implements linked display view to understanding embedding algorithms such as tSNE through `r pkg("vegawidgets")`.
+- `r pkg("liminal")` implements linked display view to understanding embedding algorithms such as tSNE through `r pkg("vegawidget")`.
 
 - `r pkg("detourr")` implements the 2D and 3D scatterplot display with three.js for better interactive manipulations (rotation, pan, selection, brushing with color and time control).
 
