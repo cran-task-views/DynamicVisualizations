@@ -107,7 +107,6 @@ The `r pkg("leaflet", priority = "core")` package is one of the most popular JS 
 - `r pkg("leafsync")` displays multiple synced leaflet maps in small multiples.
 - `r pkg("leaflet.minicharts")` displays glyphs (pie and bar), with animation, on the map.
 - `r pkg("leaflegend")` adds customized images as marks and in the legend.
-- `r pkg("leaflet.multiopacity")` provides controls the opacity over different plot layers.
 - `r pkg("leafem")` supports GIS-related layers, (e.g., Cloud Optimized Geotiff (COG), stars/rasters images).
 - `r pkg("leafgl")` renders large scale data (e.g., 1 million points or 100k polygons) with the WebGL framework.
 
