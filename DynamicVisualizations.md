@@ -36,6 +36,8 @@ The following packages can all create interactive graphics of basic types, inclu
 
 - `r pkg("rAmCharts")` and `r pkg("rAmCharts4")` (*amcharts.js*) uses the syntax `amChartType()` to specify the plot. It supports the selection of multiple datasets through the selection box, see `amStockMultiSet()`. 
 
+- `r pkg("ggvis")` follows the grammar of graphics in `ggplot2` to express interactive graphics for general purpose exploratory data analysis. Notice that although the package is currently listed on CRAN, it is labelled as dormant by its developers on GitHub.
+
 
 ## Animation
 
