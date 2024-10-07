@@ -1,7 +1,7 @@
 ---
 name: DynamicVisualizations
 topic: Dynamic Visualizations and Interactive Graphics
-maintainer: Sherry Zhang, Dianne Cook
+maintainer: Sherry Zhang, Dianne Cook, Ian Lyttle
 email: huizezhangsh@gmail.com
 version: 2024-09-25
 source: https://github.com/cran-task-views/DynamicVisualizations/
