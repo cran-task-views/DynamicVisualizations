@@ -38,6 +38,8 @@ The following packages can all create interactive graphics of basic types, inclu
 
 - `r pkg("ggvis")` follows the grammar of graphics in `ggplot2` to express interactive graphics for general purpose exploratory data analysis. Notice that although the package is currently listed on CRAN, it is labelled as dormant by its developers on GitHub.
 
+- `r pkg("RJSplot")` allows easy the generation of interactive graphics. RJSplot includes eleven graphs, such as a genome browser, Manhattan plot, genome map, network browser, heatmap, scatter plot, etc. Some live examples and tutorials can be seen on the project Web site: [https://rjsplot.usal.es](https://rjsplot.usal.es).
+
 
 ## Animation
 
@@ -124,6 +126,7 @@ The `r pkg("leaflet", priority = "core")` package is one of the most popular JS 
 
 - The `r pkg("mapdeck")` package interactive visualization for large data sets via Mapbox GL and deck.gl. It supports a wider set of objects including data frame, sf (sfencoded, sfencodedLite), geojson/json/GeoJSON.
 
+- The `r pkg("evolMap")` package provides interactive and temporal maps with a GUI which enable the exploration of information and customization of visual aspects. Represents and manages information from a database on an interactive geographic map. It also allows to view the evolution of the added elements over time or in periods. Tutorials can be seen on the developer Github: [https://github.com/BioinfoUSAL/VisualAnalyticsWorkshop](https://github.com/BioinfoUSAL/VisualAnalyticsWorkshop).
 
 ## Networks
 
@@ -136,6 +139,8 @@ Packages are available for plotting simple networks:
 - The `r pkg("visNetwork")` package (*vis.js*) creates network diagrams through node and edge data frames. It supports visualizing classification tree results from the `rpart` package.
 
 - The `r pkg("collapsibleTree")` package creates collapsible tree diagram to visualize hierarchical data structures based on D3.js. It supports clicking on tree nodes to expand and collapse child nodes, as well as tooltips and zooming.
+
+- The `r pkg("rD3plot")` package creates interactive, temporal networks with a GUI which enable the exploration of information and customization of visual aspects. Represents and manages information from a database about a network. It also allows you to view the evolution of the added elements. It provides node search, filter, display customization, playback controls and bar charts. Information can be explored on a table, tool tips and information window. Tutorials can be seen on the developer Github: [https://github.com/BioinfoUSAL/VisualAnalyticsWorkshop](https://github.com/BioinfoUSAL/VisualAnalyticsWorkshop).
 
 
 ## Miscellaneous
