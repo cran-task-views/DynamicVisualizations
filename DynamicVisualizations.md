@@ -60,6 +60,8 @@ One of the most common visualizations for high dimension data is scatterplot mat
 
 - The `r pkg("pairsD3")` package creates scatterplot matrices through D3.js. 
 
+- The `r pkg("scatterPlotMatrix")` package provides interactive scatterplot matrices. Its control widgets allow users to 1) add linear or local polynomial regression lines to examine group effects, 2) highlight points across multiple panels, and 3) choose to display correlation in the upper panels and distributions along the diagonal.
+
 When the multivariate relationship is attributed to more than two variables, a scatterplot matrix becomes insufficient and a family of techniques, called tour, can be useful to explore the structure in high dimensional data. The tour technique animates a sequence of linear projections of high dimensional data and it has two components: (1) tour type: how the projection sequence is generated, and (2) display: how low-D projections are displayed. Different tours are available to select the projection sequences (grand tour: random selection, guided tour: based on projection pursuit, etc.). The most common display is histograms for 1D projections and scatterplots for 2D projections. Other higher-D displays are also available, including Chernoff faces. 
 
 - `r pkg("tourr")` implements varies tourr types (`grand_tour`, `guided_tour`, `planned_tour`, `local_tour`, etc.) and displays (`animate_xy`: 2D, `animate_dist`: 1D, etc.) to create frame-by-frame animation. 
@@ -157,6 +159,12 @@ R also includes packages dedicated to specific interactive visualizations, often
 
 - The `r pkg("rgl")` package provides 3D visualizations built with OpenGL or WebGL as the rendering backend.
 
+- The `r pkg("sunburstR")` package (d3.js) supports building the sunburst diagram to visualize a hierarchical dataset through a series of concentric rings.
+    
+- The `r pkg("D3partitionR")` package (last update 2017-10-07) supports a collection of interactive graphics for nested data, including sunburst, treemap, circle treemap, icicle, and partition chart.
+    
+- The `r pkg("scatterD3")` package provides specific interactive element for scatter plots, including lasso selection, group highlighting based on color and shape, axis panning/ zooming, and label dragging.
+    
 
 ### Links
 
