@@ -48,11 +48,8 @@ The following packages can all create interactive graphics of basic types, inclu
 ## Animation
 
 - The `r pkg("gganimate", priority = "core")` package extends the grammar of graphics in `ggplot2` to describe animations. It provides functions to specify transition between frames (`transition_*()`), appearance and disappearance of data (`enter_*()/ exit_*()`), among others.
-
 - The `r pkg("plotly", priority = "core")` package supports animation through specifying a `frame` (and `ids`) aesthetic in the graphical element (markers, lines, etc.). 
-
 - The `r pkg("animate")` package supports creating animations using base R syntax and is powered by D3.js. 
-
 - The `r pkg("animation")` package provides a gallery of animated illustrations of common statistical concepts, such as bootstrapping and the Central Limit Tehorem (CLT), designed for teaching purposes.
 
 
@@ -61,23 +58,16 @@ The following packages can all create interactive graphics of basic types, inclu
 One of the most common visualizations for high dimension data is scatterplot matrix.
 
 - It can be created with `GGally::ggpairs()` and turned into interactive using `plotly::ggplotly()` to enable linked brushing to view the data at different variable combinations. 
-
 - The `r pkg("pairsD3")` package creates scatterplot matrices through D3.js. 
-
 - The `r pkg("scatterPlotMatrix")` package provides interactive scatterplot matrices. Its control widgets allow users to 1) add linear or local polynomial regression lines to examine group effects, 2) highlight points across multiple panels, and 3) choose to display correlation in the upper panels and distributions along the diagonal.
 
 When the multivariate relationship is attributed to more than two variables, a scatterplot matrix becomes insufficient and a family of techniques, called tour, can be useful to explore the structure in high dimensional data. The tour technique animates a sequence of linear projections of high dimensional data and it has two components: (1) tour type: how the projection sequence is generated, and (2) display: how low-D projections are displayed. Different tours are available to select the projection sequences (grand tour: random selection, guided tour: based on projection pursuit, etc.). The most common display is histograms for 1D projections and scatterplots for 2D projections. Other higher-D displays are also available, including Chernoff faces. 
 
 - `r pkg("tourr")` implements varies tourr types (`grand_tour`, `guided_tour`, `planned_tour`, `local_tour`, etc.) and displays (`animate_xy`: 2D, `animate_dist`: 1D, etc.) to create frame-by-frame animation. 
-
 - `r pkg("spinifex")` implements the manual tourr algorithm (`manual_tour`).
-
 - `r pkg("detourr")` implements the 2D and 3D scatterplot display with three.js for better interactive manipulations (rotation, pan, selection, brushing with color and time control).
-
 - `r pkg("langevitour")` implements the Langevin dynamics to generate projection sequence and builds the display with D3.js.
-
 - `r pkg("woylier")` implements the Given interpolation method to generate projection sequences for rotation variant projection pursuit indexes (those index values change when rotating the projection within the plane), e.g., the spline index.
-
 - `r pkg("ferrn")` provides diagnostic plots (track index values and visualize the basis space) to the optimization routine of the projection pursuit guided tour.
 
 Another class of interactive visualization in R is the `r pkg("loon")` toolkit. The graphic system is written in Tcl and accessed in R via the `tcltk` package. 
@@ -88,9 +78,7 @@ The `r pkg("parallelPlot")` package (*D3.js*) creates parallel coordinate plots 
 ## Temporal
 
 - The `r pkg("tsibbletalk")` package creates shared `tsibble` objects to generate linked plots of time series and other plots within the  `r pkg("crosstalk", priority = "core")` framework.
-
 - The `r pkg("dygraphs")` package (*dygraphs.js*) creates interactive time series plots for `xts` objects and supports interactive features including series highlights, value tracking, annotating event and confidence interval, range selection, and rolling window smoothing.
-
 - The `r pkg("timevis")` package (*vis.js*) creates timeline visualization for project management and event scheduling. It supports dragging and zooming on the time axis and is compatible with `crosstalk` for linked brushing. 
 
 
@@ -99,9 +87,7 @@ The `r pkg("parallelPlot")` package (*D3.js*) creates parallel coordinate plots 
 ### General purpose packages 
 
 - The `r pkg("plotly")` package provides functionality for general-purpose interactive maps that fit into the `plotly` ecosystem, supporting features like linked brushing. Simple, quick basemaps can be created with the `plot_mapbox()` and `plot_geo()` constructor. For more complex, data-driven maps (e.g., with `sf`), use the `plot_ly()` constructor or `ggplotly()` on a `ggplot2` object.
-
 - The `r pkg("ggiraph")` package supports converting `ggplot2` objects into interactive graphs. It allows flexible customization options for interactivity, including tooltip text, onclick effects, CSS for hover and select, allowing additional information to be incorporated into the visualization (e.g., linking to an external website upon clicking).
-
 - The `r pkg("highcharter")` package supports maps created from data frames/tibbles and the `geo_json` class from the `geojsonio` package. It allows customization of tooltips and enables legend clicking to show or hide categories. 
 
 
@@ -121,13 +107,9 @@ The `r pkg("leaflet", priority = "core")` package is one of the most popular JS 
 #### Others
 
 - The `r pkg("tmap")` package provides a ggplot2-styled grammar of graphic for thematic maps (both static and interactive) and uses leaflet to render interactive maps. 
-
 - The `r pkg("mapview")` package creates quick leaflet and mapdeck maps with short syntax from common spatial classes in R such as `sf`, `raster`, and `stars`.
-
 - The `r pkg("deckgl")` package interfaces with deck.gl for interactive maps. It offers an interactive editor to fine tune the map (`add_json_editor()`).
-
-- The `r pkg("mapdeck")` package interactive visualization for large data sets via Mapbox GL and deck.gl. It supports a wider set of objects including data frame, sf (sfencoded, sfencodedLite), geojson/json/GeoJSON.
-
+- The `r pkg("mapdeck")` package interactive visualization for large data sets via Mapbox GL and deck.gl. It supports a wider set of objects including data frame, sf (`sfencoded`, `sfencodedLite`), geojson/json/GeoJSON.
 - The `r pkg("evolMap")` package provides interactive and temporal maps with a GUI which enable the exploration of information and customization of visual aspects. Represents and manages information from a database on an interactive geographic map. It also allows to view the evolution of the added elements over time or in periods. Tutorials can be seen on the developer Github: [https://github.com/BioinfoUSAL/VisualAnalyticsWorkshop](https://github.com/BioinfoUSAL/VisualAnalyticsWorkshop).
 
 ## Networks
@@ -135,13 +117,9 @@ The `r pkg("leaflet", priority = "core")` package is one of the most popular JS 
 Packages are available for plotting simple networks:
 
 - The `r pkg("sigmajs")` package has its own grammar for constructing network diagrams. It supports data structure from `igraph` and `gexf` and can use various `igraph` layouts to display the network. The package has also implemented plugins from the `sigma.js`, which includes highlight neighbor nodes and apply customized images for nodes.
-
 - The `r pkg("networkD3")` package (*D3.js*) produces simple/force network, Sankey diagram, dendrogram. The visualization can be created from `igraph` objects.
-
 - The `r pkg("visNetwork")` package (*vis.js*) creates network diagrams through node and edge data frames. It supports visualizing classification tree results from the `rpart` package.
-
 - The `r pkg("collapsibleTree")` package creates collapsible tree diagram to visualize hierarchical data structures based on D3.js. It supports clicking on tree nodes to expand and collapse child nodes, as well as tooltips and zooming.
-
 - The `r pkg("rD3plot")` package creates interactive, temporal networks with a GUI which enable the exploration of information and customization of visual aspects. Represents and manages information from a database about a network. It also allows you to view the evolution of the added elements. It provides node search, filter, display customization, playback controls and bar charts. Information can be explored on a table, tool tips and information window. Tutorials can be seen on the developer Github: [https://github.com/BioinfoUSAL/VisualAnalyticsWorkshop](https://github.com/BioinfoUSAL/VisualAnalyticsWorkshop).
 
 
@@ -150,21 +128,13 @@ Packages are available for plotting simple networks:
 R also includes packages dedicated to specific interactive visualizations, often by interfacing with relevant JS libraries.
 
 - The `r pkg("trelliscopejs")` package (*trelliscope.js*) enables the interactive visualization of small multiples, making it particularly suitable for visualizing large collections of multiples that cannot be displayed on a single screen through facets. The package offers `facet_trelliscope()`, as a drop-in replacement for  `facet_wrap()`/`facet_grid()`, as well as  `trelliscope()`, a more general function that fits into the tidy workflow where data transformation (compute summaries, models, etc.) can be handled by nested data and list-column. 
-
 - The `r pkg("heatmaply")` package (*plotly.js*) allows interactive heatmaps with actions like cell-hover tooltips and zooming into specific areas. It supports data transformations such as scaling, normalizing, and percentizing, and the dendrograms for viewing the structure of observations can be customized using the `dendextend` package.
-
 - The `r pkg("iheatmapr")` package (*plotly.js*) supports heatmaps with more complex subplots in addition to clustering dendrograms. It includes annotations for group categories and customizable plots for row and column summary statistics. It also supports displaying multiple heatmaps side-by-side. 
-
 - The `tcltk` package (part of base packages) provides access to the platform-independent Tcl scripting language and Tk GUI elements, forming the basis for other packages.
-
 - The `r pkg("rgl")` package provides 3D visualizations built with OpenGL or WebGL as the rendering backend.
-
 - The `r pkg("sunburstR")` package (d3.js) supports building the sunburst diagram to visualize a hierarchical dataset through a series of concentric rings.
-
 - The `r pkg("D3partitionR")` package (last update 2017-10-07) supports a collection of interactive graphics for nested data, including sunburst, treemap, circle treemap, icicle, and partition chart.
-
 - The `r pkg("scatterD3")` package provides specific interactive element for scatter plots, including lasso selection, group highlighting based on color and shape, axis panning/ zooming, and label dragging.
-
 - Stay tuned for more developments coming in the emerging package [gglite](https://pkg.yihui.org/gglite/) which provides a grammar of graphics interface to javascript graphics, including interactivity.
 
 ### Links
