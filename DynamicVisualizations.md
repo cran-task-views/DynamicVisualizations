@@ -124,8 +124,6 @@ The `r pkg("leaflet", priority = "core")` package is one of the most popular JS 
 
 - The `r pkg("mapview")` package creates quick leaflet and mapdeck maps with short syntax from common spatial classes in R such as `sf`, `raster`, and `stars`.
 
-- The `r pkg("mapboxer")` package interfaces with Mapbox GL JS to create interactive maps. It leverages resources from the JS library for basemap styles, aesthetics controls, interactive controls, including interactive filtering ("expressions") and point clustering. 
-
 - The `r pkg("deckgl")` package interfaces with deck.gl for interactive maps. It offers an interactive editor to fine tune the map (`add_json_editor()`).
 
 - The `r pkg("mapdeck")` package interactive visualization for large data sets via Mapbox GL and deck.gl. It supports a wider set of objects including data frame, sf (sfencoded, sfencodedLite), geojson/json/GeoJSON.
